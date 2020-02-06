@@ -1,5 +1,6 @@
 ﻿using benchmark_dotnet_core.PerformanceTests;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Running;
 using System;
 using System.Collections.Generic;
@@ -13,23 +14,30 @@ namespace benchmark_dotnet_core
         {
 
             // dotnet run -c Release
-            // var summary = BenchmarkRunner.Run<SingleVsFirst>();
+            // var summary = BenchmarkRunner.Run<SingleVsFirstBenchmarks>();
 
-            // var summary = BenchmarkRunner.Run<LinqBenchmark>(new MyConfig());
-           // var summary = BenchmarkRunner.Run<StringServiceBenchmarks>();
-           
-            var summary = BenchmarkRunner.Run<TakeVsSlice>();
+            // var summary = BenchmarkRunner.Run<LinqBenchmarks>(new MyConfig());
+            // var summary = BenchmarkRunner.Run<StringServiceBenchmarks>();
+
+            // var summary = BenchmarkRunner.Run<TakeVsSliceBenchmarks>();
+
+            var summary = BenchmarkRunner.Run<SystemTextVsJsonBenchmarks>();
 
         }
     }
 
-    public class LinqBenchmark
+    [RankColumn]
+    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    public class LinqBenchmarks
     {
-        public readonly IEnumerable<int> numbers;
+        private readonly IEnumerable<int> numbers;
 
-        public LinqBenchmark()
+        [Params(10_000_000)]
+        public int Size { get; set; }
+
+        public LinqBenchmarks()
         {
-            numbers = Enumerable.Range(1, 10000000).ToArray();
+            numbers = Enumerable.Range(1, Size).ToArray();
         }
 
         [Benchmark]

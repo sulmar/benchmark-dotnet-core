@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,15 +7,20 @@ using System.Text;
 
 namespace benchmark_dotnet_core.PerformanceTests
 {
-    public class TakeVsSlice
+    [RankColumn]
+    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [MemoryDiagnoser]
+    public class TakeVsSliceBenchmarks
     {
-        private  readonly int _haystackSize = 100;
+        [Params(1_000_000)]
+        public int Size { get; set; }
 
-        private readonly int[] values;
+        private int[] values;
 
-         public TakeVsSlice()
+        [GlobalSetup]
+        public void Setup()
         {
-            values = Enumerable.Range(1, _haystackSize).ToArray();
+            values = Enumerable.Range(1, Size).ToArray();
         }
 
         [Benchmark]
