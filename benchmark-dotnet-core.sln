@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "benchmark-dotnet-core", "benchmark-dotnet-core\benchmark-dotnet-core.csproj", "{97D9B0C8-3FF8-434E-8464-D959F3A7F533}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97D9B0C8-3FF8-434E-8464-D959F3A7F533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97D9B0C8-3FF8-434E-8464-D959F3A7F533}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97D9B0C8-3FF8-434E-8464-D959F3A7F533}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97D9B0C8-3FF8-434E-8464-D959F3A7F533}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22AC8F25-047D-4151-A5B6-5BB59484F645}
+	EndGlobalSection
+EndGlobal
